@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://jjt067gyglcg"]
 
-[ext_resource type="Script" path="res://Example/TestScene.gd" id="1_wk8kh"]
-[ext_resource type="Script" path="res://XmlNodes/XmlNode.gd" id="2_ml2if"]
+[ext_resource type="Script" path="res://Example-XmlNodes/TestScene.gd" id="1_wk8kh"]
+[ext_resource type="Script" path="res://addons/XmlNodes/XmlNode.gd" id="2_ml2if"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -113,7 +113,7 @@ offset_left = 135.0
 offset_top = 5.0
 offset_right = 409.0
 offset_bottom = 49.0
-text = "res://Example/Test.xml"
+text = "res://Example-XmlNodes/Test.xml"
 
 [node name="BtnRunTest" type="Button" parent="."]
 layout_mode = 0
@@ -165,19 +165,19 @@ text = "EDITOR NODES -> XML"
 
 [node name="BtnFancyCreate" type="Button" parent="."]
 layout_mode = 0
-offset_left = 809.0
-offset_top = 102.0
-offset_right = 989.0
-offset_bottom = 143.0
+offset_left = 806.0
+offset_top = 60.0
+offset_right = 986.0
+offset_bottom = 101.0
 text = "FANCY CODE->XML
 "
 
 [node name="BtnMoreFancyCreate" type="Button" parent="."]
 layout_mode = 0
-offset_left = 806.0
-offset_top = 56.0
-offset_right = 986.0
-offset_bottom = 97.0
+offset_left = 804.0
+offset_top = 114.0
+offset_right = 984.0
+offset_bottom = 155.0
 text = "BETTER -> XML"
 
 [node name="BtnTestEscapes" type="Button" parent="."]

@@ -6,7 +6,7 @@ extends Control
 @onready var xml_as_nodes: Node = %XML_AS_NODES
 @onready var xml_path: TextEdit = %XmlPath
 
-var TestFile:String = "res://Example/TestSmall.xml"
+var TestFile:String = "res://Example-XmlNodes/TestSmall.xml"
 
 func _on_btn_run_test_button_up() -> void:
 	var node:XmlNode = XmlNode.parseXml(xml_path.text)
@@ -119,7 +119,7 @@ func _on_btn_editor_node_to_text_button_up() -> void:
 
 
 func _on_btn_load_test_file_deep_button_up() -> void:
-	var node:XmlNode = XmlNode.parseXml("res://Example/DeepNodes.xml")
+	var node:XmlNode = XmlNode.parseXml("res://Example-XmlNodes/DeepNodes.xml")
 	if node != null:
 		var xmlFile:String = node.writeXmlLine()
 		xml_loaded.text = xmlFile
@@ -129,7 +129,7 @@ func _on_btn_load_test_file_deep_button_up() -> void:
 
 
 func _on_btn_load_test_file_testing_button_up() -> void:
-	var node:XmlNode = XmlNode.parseXml("res://Example/Testing.xml")
+	var node:XmlNode = XmlNode.parseXml("res://Example-XmlNodes/Testing.xml")
 	if node != null:
 		var xmlFile:String = node.writeXmlLine()
 		xml_loaded.text = xmlFile
