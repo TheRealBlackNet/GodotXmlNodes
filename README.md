@@ -24,22 +24,22 @@ Copy the addons folder into your projects root folder.
 - Best use is create a root node with "XmlNode.newNode" or "XmlNode.newNodeWithText"
 - then add nodes to this root
 - the return values from all "addNode*" commands is the new created node
-- ***its not a fluent interface!***
+- ***its not a fluent interface!***
 
 ## Create a XML:
 
-var root:XmlNode = XmlNode.newNodeWithText("root", "Text")
-root.addAttributes("Att1", "A")
-root.addAttributes("Att2", "B")
-root.addComment("Test Comment")
-root.addNode("A1")
-root.addNodeWithText("A2", "A2Text")
-root.addNodeClosed("A3")
-root.addNode("A4").addCData("CDATA-HERE-ADDED")
-
-var xmlFile:String = root.writeXmlLine()
-xml_loaded.text = xmlFile
-print(xmlFile)
+	var root:XmlNode = XmlNode.newNodeWithText("root", "Text")
+	root.addAttributes("Att1", "A")
+	root.addAttributes("Att2", "B")
+	root.addComment("Test Comment")
+	root.addNode("A1")
+	root.addNodeWithText("A2", "A2Text")
+	root.addNodeClosed("A3")
+	root.addNode("A4").addCData("CDATA-HERE-ADDED")
+	
+	var xmlFile:String = root.writeXmlLine()
+	xml_loaded.text = xmlFile
+	print(xmlFile)
 
 ## Result
 
