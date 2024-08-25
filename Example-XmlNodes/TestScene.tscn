@@ -180,14 +180,6 @@ offset_right = 984.0
 offset_bottom = 155.0
 text = "BETTER -> XML"
 
-[node name="BtnTestEscapes" type="Button" parent="."]
-layout_mode = 0
-offset_left = 429.0
-offset_top = 110.0
-offset_right = 597.0
-offset_bottom = 152.0
-text = "ESCAPES"
-
 [connection signal="button_up" from="BtnRunTest" to="." method="_on_btn_run_test_button_up"]
 [connection signal="button_up" from="BtnLoadTestFile" to="." method="_on_btn_load_test_file_button_up"]
 [connection signal="button_up" from="BtnLoadTestFileDeep" to="." method="_on_btn_load_test_file_deep_button_up"]
@@ -196,4 +188,3 @@ text = "ESCAPES"
 [connection signal="button_up" from="BtnEditorNodeToText" to="." method="_on_btn_editor_node_to_text_button_up"]
 [connection signal="button_up" from="BtnFancyCreate" to="." method="_on_btn_fancy_create_button_up"]
 [connection signal="button_up" from="BtnMoreFancyCreate" to="." method="_on_btn_more_fancy_create_button_up"]
-[connection signal="button_up" from="BtnTestEscapes" to="." method="_on_btn_test_escapes_button_up"]
