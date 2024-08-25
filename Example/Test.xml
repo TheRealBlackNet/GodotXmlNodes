@@ -1,0 +1,24 @@
+<root rootOption1="RO1" rootOption2="RO2">
+	<!-- Comment1 -->
+	<NodeL1 L1Opt1="L1O1" L1Opt2="L1O2"></NodeL1>
+	<NodeL1 L1Opt1="A" L1Opt2="B">
+		<NodeL2 L2Opt1="A">VAL</NodeL2>
+		<NodeL2 L2Opt2="B">VAL</NodeL2>
+		<NodeL2 L2Opt3="C" />
+		<NodeL2 L2Opt4="D" />
+		<NodeL2 TREE="D" >
+			<!-- Comment DEEP -->
+			<A>Hello</A>
+			<B>World</B>
+			<C val="C">!</C>
+			<D>
+				<X>
+					<Y VAL="DEEP">DEEP</Y>
+				</X>
+			</D>
+			<CD>
+				<![CDATA[---CDATA-Inhalt---]]>
+			</CD>
+		</NodeL2>
+	</NodeL1>
+</root>

@@ -1,0 +1,199 @@
+[gd_scene load_steps=3 format=3 uid="uid://jjt067gyglcg"]
+
+[ext_resource type="Script" path="res://Example/TestScene.gd" id="1_wk8kh"]
+[ext_resource type="Script" path="res://XmlNodes/XmlNode.gd" id="2_ml2if"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wk8kh")
+
+[node name="XML_TO_SAVE" type="TextEdit" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 11.0
+offset_top = 55.0
+offset_right = 408.0
+offset_bottom = 988.0
+theme_override_font_sizes/font_size = 20
+text = "<root rootOption1=\"RO1\" rootOption2=\"RO2\">
+	<!-- Comment -->
+	Text in Root
+	<NodeL1 L1Opt1=\"L1O1\" L1Opt2=\"L1O2\" L1Opt3=\"L1O3\">
+		Text Node 1
+	</NodeL1>
+	<NodeL1 L1Opt1=\"A\" L1Opt2=\"B\">
+		Text Node 2
+		<NodeL2 L2Opt1=\"A\">VAL</NodeL2>
+		<NodeL2 L2Opt2=\"B\">VAL</NodeL2>
+		<NodeL2 L2Opt3=\"C\" />
+		<NodeL2 L2Opt4=\"D\" />
+		<NodeL2 TREE=\"D\" >
+			<!-- Comment DEEP -->
+			<A>Hello</A>
+			<B>World</B>
+			<C val=\"C\">!</C>
+			<D>
+				<X>
+					<Y VAL=\"DEEP\">DEEP</Y>
+				</X>
+			</D>
+			<CD>
+				<![CDATA[---CDATA-Inhalt---]]>
+			</CD>
+		</NodeL2>
+	</NodeL1>
+</root>"
+editable = false
+
+[node name="XML_LOADED" type="TextEdit" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 416.0
+offset_top = 166.0
+offset_right = 994.0
+offset_bottom = 989.0
+theme_override_font_sizes/font_size = 20
+placeholder_text = "xml will be load here!"
+editable = false
+wrap_mode = 1
+
+[node name="XML_NODES_HERE" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="XML_AS_NODES" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="root" type="Node" parent="XML_AS_NODES"]
+script = ExtResource("2_ml2if")
+nodeattributes = {
+"RootAtt1": "RootVal1",
+"RootAtt2": "RottVal2"
+}
+nodeText = "Text"
+
+[node name="Comment" type="Node" parent="XML_AS_NODES/root"]
+script = ExtResource("2_ml2if")
+nodeType = 4
+nodeText = "This is a Comment"
+tagName = ""
+
+[node name="A1" type="Node" parent="XML_AS_NODES/root"]
+script = ExtResource("2_ml2if")
+tagName = "A1"
+
+[node name="A2" type="Node" parent="XML_AS_NODES/root"]
+script = ExtResource("2_ml2if")
+nodeText = "A"
+tagName = "A2"
+
+[node name="A3" type="Node" parent="XML_AS_NODES/root"]
+script = ExtResource("2_ml2if")
+tagName = "A3"
+noEndTag = true
+
+[node name="A4" type="Node" parent="XML_AS_NODES/root"]
+script = ExtResource("2_ml2if")
+tagName = "A4"
+
+[node name="CDATA" type="Node" parent="XML_AS_NODES/root/A4"]
+script = ExtResource("2_ml2if")
+nodeType = 5
+nodeText = "CDATA-Data-Conent"
+tagName = ""
+
+[node name="XmlPath" type="TextEdit" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 135.0
+offset_top = 5.0
+offset_right = 409.0
+offset_bottom = 49.0
+text = "res://Example/Test.xml"
+
+[node name="BtnRunTest" type="Button" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 6.0
+offset_right = 130.0
+offset_bottom = 51.0
+text = "LOAD"
+
+[node name="BtnLoadTestFile" type="Button" parent="."]
+layout_mode = 0
+offset_left = 603.0
+offset_top = 8.0
+offset_right = 792.0
+offset_bottom = 53.0
+text = "LOAD MIN"
+
+[node name="BtnLoadTestFileDeep" type="Button" parent="."]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 4.0
+offset_right = 583.0
+offset_bottom = 49.0
+text = "DEEP"
+
+[node name="BtnLoadTestFileTesting" type="Button" parent="."]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 57.0
+offset_right = 585.0
+offset_bottom = 102.0
+text = "Testing"
+
+[node name="BtnNodeToText" type="Button" parent="."]
+layout_mode = 0
+offset_left = 806.0
+offset_top = 9.0
+offset_right = 987.0
+offset_bottom = 52.0
+text = "CODE NODES -> XML"
+
+[node name="BtnEditorNodeToText" type="Button" parent="."]
+layout_mode = 0
+offset_left = 608.0
+offset_top = 61.0
+offset_right = 795.0
+offset_bottom = 104.0
+text = "EDITOR NODES -> XML"
+
+[node name="BtnFancyCreate" type="Button" parent="."]
+layout_mode = 0
+offset_left = 809.0
+offset_top = 102.0
+offset_right = 989.0
+offset_bottom = 143.0
+text = "FANCY CODE->XML
+"
+
+[node name="BtnMoreFancyCreate" type="Button" parent="."]
+layout_mode = 0
+offset_left = 806.0
+offset_top = 56.0
+offset_right = 986.0
+offset_bottom = 97.0
+text = "BETTER -> XML"
+
+[node name="BtnTestEscapes" type="Button" parent="."]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 110.0
+offset_right = 597.0
+offset_bottom = 152.0
+text = "ESCAPES"
+
+[connection signal="button_up" from="BtnRunTest" to="." method="_on_btn_run_test_button_up"]
+[connection signal="button_up" from="BtnLoadTestFile" to="." method="_on_btn_load_test_file_button_up"]
+[connection signal="button_up" from="BtnLoadTestFileDeep" to="." method="_on_btn_load_test_file_deep_button_up"]
+[connection signal="button_up" from="BtnLoadTestFileTesting" to="." method="_on_btn_load_test_file_testing_button_up"]
+[connection signal="button_up" from="BtnNodeToText" to="." method="_on_btn_node_to_text_button_up"]
+[connection signal="button_up" from="BtnEditorNodeToText" to="." method="_on_btn_editor_node_to_text_button_up"]
+[connection signal="button_up" from="BtnFancyCreate" to="." method="_on_btn_fancy_create_button_up"]
+[connection signal="button_up" from="BtnMoreFancyCreate" to="." method="_on_btn_more_fancy_create_button_up"]
+[connection signal="button_up" from="BtnTestEscapes" to="." method="_on_btn_test_escapes_button_up"]

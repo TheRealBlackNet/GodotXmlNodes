@@ -1,0 +1,11 @@
+<root level="0">
+	<n2 level="1">A
+		<!-- C1 -->
+		<n3 level="2">B
+			<!-- C2 -->
+			<n4 level="3">C
+				<!-- C3 -->
+			</n4>
+		</n3>
+	</n2>
+</root>
