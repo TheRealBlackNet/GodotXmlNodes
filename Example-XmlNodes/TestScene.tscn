@@ -126,9 +126,9 @@ text = "LOAD"
 [node name="BtnLoadTestFile" type="Button" parent="."]
 layout_mode = 0
 offset_left = 603.0
-offset_top = 8.0
+offset_top = 6.0
 offset_right = 792.0
-offset_bottom = 53.0
+offset_bottom = 51.0
 text = "LOAD MIN"
 
 [node name="BtnLoadTestFileDeep" type="Button" parent="."]
@@ -141,10 +141,10 @@ text = "DEEP"
 
 [node name="BtnLoadTestFileTesting" type="Button" parent="."]
 layout_mode = 0
-offset_left = 432.0
-offset_top = 57.0
-offset_right = 585.0
-offset_bottom = 102.0
+offset_left = 430.0
+offset_top = 58.0
+offset_right = 583.0
+offset_bottom = 103.0
 text = "Testing"
 
 [node name="BtnNodeToText" type="Button" parent="."]
@@ -157,10 +157,10 @@ text = "CODE NODES -> XML"
 
 [node name="BtnEditorNodeToText" type="Button" parent="."]
 layout_mode = 0
-offset_left = 608.0
-offset_top = 61.0
-offset_right = 795.0
-offset_bottom = 104.0
+offset_left = 603.0
+offset_top = 56.0
+offset_right = 790.0
+offset_bottom = 99.0
 text = "EDITOR NODES -> XML"
 
 [node name="BtnFancyCreate" type="Button" parent="."]
@@ -180,6 +180,96 @@ offset_right = 984.0
 offset_bottom = 155.0
 text = "BETTER -> XML"
 
+[node name="BtnSearchTest" type="Button" parent="."]
+layout_mode = 0
+offset_left = 608.0
+offset_top = 107.0
+offset_right = 785.0
+offset_bottom = 161.0
+text = "SEARCH TEST"
+
+[node name="SEARCH_TEST_NODES" type="Node" parent="."]
+
+[node name="rootSearch" type="Node" parent="SEARCH_TEST_NODES"]
+unique_name_in_owner = true
+script = ExtResource("2_ml2if")
+nodeattributes = {
+"id": "root",
+"name": "root"
+}
+
+[node name="SUB1" type="Node" parent="SEARCH_TEST_NODES/rootSearch"]
+script = ExtResource("2_ml2if")
+nodeattributes = {
+"id": "SUB1",
+"name": "SUB1"
+}
+tagName = "SUB1"
+
+[node name="a" type="Node" parent="SEARCH_TEST_NODES/rootSearch/SUB1"]
+script = ExtResource("2_ml2if")
+nodeattributes = {
+"id": "link",
+"name": "x"
+}
+tagName = "a"
+
+[node name="a2" type="Node" parent="SEARCH_TEST_NODES/rootSearch/SUB1"]
+script = ExtResource("2_ml2if")
+nodeattributes = {
+"id": "link2",
+"name": "x"
+}
+tagName = "a"
+
+[node name="SUB2" type="Node" parent="SEARCH_TEST_NODES/rootSearch"]
+script = ExtResource("2_ml2if")
+nodeattributes = {
+"id": "SUB2",
+"name": "SUB2"
+}
+tagName = "SUB2"
+
+[node name="a" type="Node" parent="SEARCH_TEST_NODES/rootSearch/SUB2"]
+script = ExtResource("2_ml2if")
+nodeattributes = {
+"id": "link",
+"name": "x"
+}
+tagName = "a"
+
+[node name="a2" type="Node" parent="SEARCH_TEST_NODES/rootSearch/SUB2"]
+script = ExtResource("2_ml2if")
+nodeattributes = {
+"id": "link2",
+"name": "x"
+}
+tagName = "a"
+
+[node name="SUB3" type="Node" parent="SEARCH_TEST_NODES/rootSearch"]
+script = ExtResource("2_ml2if")
+nodeattributes = {
+"id": "SUB3",
+"name": "SUB3"
+}
+tagName = "SUB3"
+
+[node name="a" type="Node" parent="SEARCH_TEST_NODES/rootSearch/SUB3"]
+script = ExtResource("2_ml2if")
+nodeattributes = {
+"id": "link",
+"name": "x"
+}
+tagName = "a"
+
+[node name="a2" type="Node" parent="SEARCH_TEST_NODES/rootSearch/SUB3"]
+script = ExtResource("2_ml2if")
+nodeattributes = {
+"id": "link2",
+"name": "x"
+}
+tagName = "a"
+
 [connection signal="button_up" from="BtnRunTest" to="." method="_on_btn_run_test_button_up"]
 [connection signal="button_up" from="BtnLoadTestFile" to="." method="_on_btn_load_test_file_button_up"]
 [connection signal="button_up" from="BtnLoadTestFileDeep" to="." method="_on_btn_load_test_file_deep_button_up"]
@@ -188,3 +278,4 @@ text = "BETTER -> XML"
 [connection signal="button_up" from="BtnEditorNodeToText" to="." method="_on_btn_editor_node_to_text_button_up"]
 [connection signal="button_up" from="BtnFancyCreate" to="." method="_on_btn_fancy_create_button_up"]
 [connection signal="button_up" from="BtnMoreFancyCreate" to="." method="_on_btn_more_fancy_create_button_up"]
+[connection signal="button_up" from="BtnSearchTest" to="." method="_on_btn_search_test_button_up"]

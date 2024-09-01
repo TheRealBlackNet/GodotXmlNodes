@@ -5,9 +5,12 @@ extends Control
 @onready var xml_nodes_here = %XML_NODES_HERE
 @onready var xml_as_nodes: Node = %XML_AS_NODES
 @onready var xml_path: TextEdit = %XmlPath
+@onready var xml_root_search: XmlNode = %rootSearch
+
 
 var TestFile:String = "res://Example-XmlNodes/TestSmall.xml"
 
+#
 func _on_btn_run_test_button_up() -> void:
 	var node:XmlNode = XmlNode.parseXml(xml_path.text)
 	if node != null:
@@ -16,8 +19,6 @@ func _on_btn_run_test_button_up() -> void:
 		print(xmlFile)
 	else:
 		xml_loaded.text = "NULL"
-
-
 
 func _on_btn_load_test_file_button_up() -> void:
 	var node:XmlNode = XmlNode.parseXml(TestFile)
@@ -138,5 +139,17 @@ func _on_btn_load_test_file_testing_button_up() -> void:
 		xml_loaded.text = "NULL"
 
 
-func _on_btn_test_escapes_button_up() -> void:
-	pass # Replace with function body.
+func _on_btn_search_test_button_up() -> void:
+	print("#".repeat(20))
+	print("Start Search:")
+	print("#".repeat(20))
+	var dummy:XmlNode = XmlNode.new()
+	dummy.tagName = "result_get_by_id"
+	dummy.addNodesFromArray(xml_root_search.searchNodesById("link2"))
+	print(dummy.writeXmlLine())
+	xml_loaded.text = dummy.writeXmlLine()
+	dummy = XmlNode.new()
+	dummy.tagName = "result_get_by_name"
+	dummy.addNodesFromArray(xml_root_search.searchNodesByName("x"))
+	print(dummy.writeXmlLine())
+	xml_loaded.text += "\r\n\r\n" + dummy.writeXmlLine()

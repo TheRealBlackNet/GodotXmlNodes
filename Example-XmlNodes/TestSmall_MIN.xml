@@ -1,1 +1,2 @@
+<?xml version='1.0' encoding='utf-8' ?>
 <root A="AAA" B="BBB">Text<!-- ThisIsAComment --><A1></A1><A2>A</A2><A3/><A4><![CDATA[---CDATA-Inhalt---]]></A4></root>

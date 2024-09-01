@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Godot Xml Nodes"
+config/description="XML Nodes to give editor nodes the ability to have XML export and parse them. "
 run/main_scene="res://Example-XmlNodes/TestScene.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 
