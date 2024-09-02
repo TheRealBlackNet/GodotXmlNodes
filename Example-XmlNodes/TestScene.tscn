@@ -8,6 +8,7 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wk8kh")
@@ -18,7 +19,7 @@ layout_mode = 0
 offset_left = 11.0
 offset_top = 55.0
 offset_right = 408.0
-offset_bottom = 988.0
+offset_bottom = 650.0
 theme_override_font_sizes/font_size = 20
 text = "<root rootOption1=\"RO1\" rootOption2=\"RO2\">
 	<!-- Comment -->
@@ -53,7 +54,7 @@ editable = false
 [node name="XML_LOADED" type="TextEdit" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 416.0
+offset_left = 427.0
 offset_top = 166.0
 offset_right = 994.0
 offset_bottom = 989.0
@@ -270,6 +271,84 @@ nodeattributes = {
 }
 tagName = "a"
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 18.0
+offset_top = 656.0
+offset_right = 395.0
+offset_bottom = 679.0
+text = "EVENT - PRE WRITE - SET DATA IN TEXT:"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 17.0
+offset_top = 817.0
+offset_right = 394.0
+offset_bottom = 840.0
+text = "Attribut: TESTATT:"
+
+[node name="txtNodeText1" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 685.0
+offset_right = 410.0
+offset_bottom = 721.0
+text = "Text in node 1"
+placeholder_text = "add A text in node 1"
+
+[node name="txtNodeText2" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 726.0
+offset_right = 411.0
+offset_bottom = 762.0
+placeholder_text = "add A text in node 2"
+
+[node name="txtNodeText3" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 766.0
+offset_right = 411.0
+offset_bottom = 802.0
+text = "More Text in node 3"
+placeholder_text = "add A text in node 3"
+
+[node name="txtAttEvent" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 848.0
+offset_right = 412.0
+offset_bottom = 884.0
+text = "AttributeValue"
+placeholder_text = "value"
+
+[node name="BtnEventRun" type="Button" parent="."]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 896.0
+offset_right = 183.0
+offset_bottom = 976.0
+text = "RUN WITH EVENTS"
+
+[node name="EventRoot" type="Node" parent="BtnEventRun"]
+unique_name_in_owner = true
+script = ExtResource("2_ml2if")
+tagName = "eventRoot"
+
+[node name="node1" type="Node" parent="BtnEventRun/EventRoot"]
+script = ExtResource("2_ml2if")
+tagName = "node1"
+
+[node name="node2" type="Node" parent="BtnEventRun/EventRoot"]
+script = ExtResource("2_ml2if")
+tagName = "node2"
+
+[node name="node3" type="Node" parent="BtnEventRun/EventRoot"]
+script = ExtResource("2_ml2if")
+tagName = "node3"
+
 [connection signal="button_up" from="BtnRunTest" to="." method="_on_btn_run_test_button_up"]
 [connection signal="button_up" from="BtnLoadTestFile" to="." method="_on_btn_load_test_file_button_up"]
 [connection signal="button_up" from="BtnLoadTestFileDeep" to="." method="_on_btn_load_test_file_deep_button_up"]
@@ -279,3 +358,8 @@ tagName = "a"
 [connection signal="button_up" from="BtnFancyCreate" to="." method="_on_btn_fancy_create_button_up"]
 [connection signal="button_up" from="BtnMoreFancyCreate" to="." method="_on_btn_more_fancy_create_button_up"]
 [connection signal="button_up" from="BtnSearchTest" to="." method="_on_btn_search_test_button_up"]
+[connection signal="button_up" from="BtnEventRun" to="." method="_on_btn_event_run_button_up"]
+[connection signal="prewrite" from="BtnEventRun/EventRoot" to="." method="_on_event_root_prewrite"]
+[connection signal="prewrite" from="BtnEventRun/EventRoot/node1" to="." method="_on_event_root_prewrite"]
+[connection signal="prewrite" from="BtnEventRun/EventRoot/node2" to="." method="_on_event_root_prewrite"]
+[connection signal="prewrite" from="BtnEventRun/EventRoot/node3" to="." method="_on_event_root_prewrite"]

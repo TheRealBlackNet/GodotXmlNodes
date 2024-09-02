@@ -6,6 +6,11 @@ extends Control
 @onready var xml_as_nodes: Node = %XML_AS_NODES
 @onready var xml_path: TextEdit = %XmlPath
 @onready var xml_root_search: XmlNode = %rootSearch
+@onready var txt_node_text_1: TextEdit = $txtNodeText1
+@onready var txt_node_text_2: TextEdit = $txtNodeText2
+@onready var txt_node_text_3: TextEdit = $txtNodeText3
+@onready var txt_att_event: TextEdit = $txtAttEvent
+@onready var event_root: XmlNode = %EventRoot
 
 
 var TestFile:String = "res://Example-XmlNodes/TestSmall.xml"
@@ -153,3 +158,21 @@ func _on_btn_search_test_button_up() -> void:
 	dummy.addNodesFromArray(xml_root_search.searchNodesByName("x"))
 	print(dummy.writeXmlLine())
 	xml_loaded.text += "\r\n\r\n" + dummy.writeXmlLine()
+
+
+func _on_event_root_prewrite(currentNode: XmlNode) -> void:
+	if currentNode.name == "EventRoot":
+		currentNode.nodeText = ""
+		currentNode.addAttributes("TESTATT", txt_att_event.text)
+	if currentNode.name == "node1":
+		currentNode.nodeText = txt_node_text_1.text
+	if currentNode.name == "node2":
+		currentNode.nodeText = txt_node_text_2.text
+	if currentNode.name == "node3":
+		currentNode.nodeText = txt_node_text_3.text
+
+
+func _on_btn_event_run_button_up() -> void:
+	var x:String = event_root.writeXmlLine()
+	print(x);
+	xml_loaded.text = x

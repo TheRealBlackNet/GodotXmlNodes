@@ -7,6 +7,8 @@ class_name XmlNode
 
 
 @export_category("XML")
+## event will be run before the text is written
+signal prewrite(currentNode:XmlNode)
 ## A map with string\string pairs that are the attributes of a xml node. 
 ## please be responsible with the keys because i cant protect the map
 ## in gd script and want to edit it editor: no numbers at start
@@ -106,13 +108,18 @@ func searchNodesByName(attributeValue:String) -> Array[XmlNode]:
 ## returns the xml from this point down 
 ## call this function on root to get the full xml
 ## (no pretty print here)
-func writeXmlLine() -> String:
+func writeXmlLine(addDeclaration:bool = true) -> String:
 	# there are child nodes cant <xml/>
 	if noEndTag && get_child_count() > 0\
 	 || nodeText.length() > 0:
 		noEndTag = false
 	
-	var retval = "<?xml version='1.0' encoding='utf-8' ?>\r\n";
+	prewrite.emit(self)
+	
+	var retval = ""
+	if addDeclaration:
+		retval += "<?xml version='1.0' encoding='utf-8' ?>\r\n";
+	
 	# -- OPENING TAG --
 	if nodeType == XMLParser.NodeType.NODE_COMMENT:
 		retval += "<!-- " + nodeText
@@ -141,7 +148,7 @@ func writeXmlLine() -> String:
 		retval += ">" + nodeText
 		# REKURSION:
 		for child in get_children():
-			retval += child.writeXmlLine()
+			retval += child.writeXmlLine(false)
 		# END TAG
 		retval += "</" + tagName + ">"
 	
