@@ -61,3 +61,5 @@ Github: https://github.com/TheRealBlackNet/GodotXmlNodes
 - escaping from attrtibutes
 	- current default space to underline for keys
 	- no " escaping
+- walking the scene tree and ignore the non XMLNodes to have composition possible.
+then each xmlnode could use the same preWrite event and grabbing parent and get information from there.
