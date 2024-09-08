@@ -40,11 +40,17 @@ func addAttributes(key:String, value:String) -> void:
 	# also should not start with a number
 	nodeattributes[key.replace(" ", "_")] = value
 
+
+
+
 #
 #
 # SEARCH
 #
 #
+
+
+
 
 ## searches the childnodes for a tag name: <root />
 ## and return a array of nodes 
@@ -96,6 +102,9 @@ func searchNodesByName(attributeValue:String) -> Array[XmlNode]:
 	return self.searchNodesByAttributeNameValue("name", attributeValue)
 
 
+
+
+
 #
 #
 #
@@ -105,11 +114,17 @@ func searchNodesByName(attributeValue:String) -> Array[XmlNode]:
 #
 
 
+
+
+
 ## returns the xml from this point down 
 ## call this function on root to get the full xml
 ## (no pretty print here)
+## addDeclaration = if false it wont add "xml version" 
 func writeXmlLine(addDeclaration:bool = true) -> String:
 	# there are child nodes cant <xml/>
+	# only switch it off because castor will need 
+	# the empty tags so closing it here would be bad!
 	if noEndTag && get_child_count() > 0\
 	 || nodeText.length() > 0:
 		noEndTag = false
@@ -147,6 +162,7 @@ func writeXmlLine(addDeclaration:bool = true) -> String:
 	else:
 		retval += ">" + nodeText
 		# REKURSION:
+		# CURRENT ALL XML NODES NEED TO BE UNDER EACH OTHER
 		for child in get_children():
 			retval += child.writeXmlLine(false)
 		# END TAG
@@ -221,11 +237,17 @@ func saveXml(path:String) -> void:
 	file.flush()
 	file.close()
 
+
+
+
 #
 #
 # PRINT UTILS
 #
 #
+
+
+
 
 ## turn the node type into a display name
 static func getNodeTypeString(nt:int) -> String:
@@ -385,7 +407,7 @@ func addCData(data:String) -> XmlNode:
 ## adding nodes from search into current node 
 ## will be duplicates!
 func addNodesFromArray(nodes:Array[XmlNode]) -> void:
-		if nodes != null && !nodes.is_empty():
-			for cur:XmlNode in nodes:
-				self.add_child(cur.duplicate())
-			self.noEndTag = false
+	if nodes != null && !nodes.is_empty():
+		for cur:XmlNode in nodes:
+			self.add_child(cur.duplicate())
+		self.noEndTag = false
