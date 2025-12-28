@@ -4,6 +4,7 @@ extends Control
 @onready var xml_loaded = %XML_LOADED
 @onready var xml_nodes_here = %XML_NODES_HERE
 @onready var xml_as_nodes: Node = %XML_AS_NODES
+@onready var html_as_nodes: Node = %HTML_AS_NODES
 @onready var xml_path: TextEdit = %XmlPath
 @onready var xml_root_search: XmlNode = %rootSearch
 @onready var txt_node_text_1: TextEdit = $txtNodeText1
@@ -123,6 +124,11 @@ func _on_btn_editor_node_to_text_button_up() -> void:
 	xml_loaded.text = xmlFile
 	print(xmlFile)
 
+func _on_btn_html_button_up() -> void:
+	var root:XmlNode = html_as_nodes.get_child(0);
+	var xmlFile:String = root.writeXmlLine()
+	xml_loaded.text = xmlFile
+	print(xmlFile)
 
 func _on_btn_load_test_file_deep_button_up() -> void:
 	var node:XmlNode = XmlNode.parseXml("res://Example-XmlNodes/DeepNodes.xml")

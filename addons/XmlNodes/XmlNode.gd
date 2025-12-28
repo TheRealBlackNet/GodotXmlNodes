@@ -30,6 +30,11 @@ var tagName:String = "root"
 @export
 var noEndTag:bool = false
 
+## writes <!DOCTYPE html> before this node
+@export
+var isHtml:bool = false
+
+
 ## internal counter for the layers in the xml
 ## can be used for a formatter
 var depth:int = 0
@@ -133,7 +138,10 @@ func writeXmlLine(addDeclaration:bool = true) -> String:
 	
 	var retval = ""
 	if addDeclaration:
-		retval += "<?xml version='1.0' encoding='utf-8' ?>\r\n";
+		if isHtml:
+			retval += "<!DOCTYPE html>\r\n"
+		else:
+			retval += "<?xml version='1.0' encoding='utf-8' ?>\r\n";
 	
 	# -- OPENING TAG --
 	if nodeType == XMLParser.NodeType.NODE_COMMENT:

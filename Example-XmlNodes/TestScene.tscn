@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://jjt067gyglcg"]
 
-[ext_resource type="Script" path="res://Example-XmlNodes/TestScene.gd" id="1_wk8kh"]
-[ext_resource type="Script" path="res://addons/XmlNodes/XmlNode.gd" id="2_ml2if"]
+[ext_resource type="Script" uid="uid://cqkew06igaexo" path="res://Example-XmlNodes/TestScene.gd" id="1_wk8kh"]
+[ext_resource type="Script" uid="uid://hld1ec6xkn70" path="res://addons/XmlNodes/XmlNode.gd" id="2_ml2if"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -183,11 +183,68 @@ text = "BETTER -> XML"
 
 [node name="BtnSearchTest" type="Button" parent="."]
 layout_mode = 0
-offset_left = 608.0
-offset_top = 107.0
-offset_right = 785.0
-offset_bottom = 161.0
+offset_left = 627.0
+offset_top = 104.0
+offset_right = 804.0
+offset_bottom = 158.0
 text = "SEARCH TEST"
+
+[node name="HTML_AS_NODES" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="html" type="Node" parent="HTML_AS_NODES"]
+script = ExtResource("2_ml2if")
+tagName = "html"
+isHtml = true
+metadata/_custom_type_script = "uid://hld1ec6xkn70"
+
+[node name="head" type="Node" parent="HTML_AS_NODES/html"]
+script = ExtResource("2_ml2if")
+tagName = "head"
+isHtml = true
+metadata/_custom_type_script = "uid://hld1ec6xkn70"
+
+[node name="title" type="Node" parent="HTML_AS_NODES/html/head"]
+script = ExtResource("2_ml2if")
+nodeText = "Title Line"
+tagName = "title"
+isHtml = true
+metadata/_custom_type_script = "uid://hld1ec6xkn70"
+
+[node name="style" type="Node" parent="HTML_AS_NODES/html/head"]
+script = ExtResource("2_ml2if")
+nodeText = "h1 {color: red;}"
+tagName = "style"
+isHtml = true
+metadata/_custom_type_script = "uid://hld1ec6xkn70"
+
+[node name="body" type="Node" parent="HTML_AS_NODES/html"]
+script = ExtResource("2_ml2if")
+tagName = "body"
+isHtml = true
+metadata/_custom_type_script = "uid://hld1ec6xkn70"
+
+[node name="h1" type="Node" parent="HTML_AS_NODES/html/body"]
+script = ExtResource("2_ml2if")
+nodeText = "a H1 Tag"
+tagName = "h1"
+isHtml = true
+metadata/_custom_type_script = "uid://hld1ec6xkn70"
+
+[node name="p" type="Node" parent="HTML_AS_NODES/html/body"]
+script = ExtResource("2_ml2if")
+nodeText = "A text in a p"
+tagName = "p"
+isHtml = true
+metadata/_custom_type_script = "uid://hld1ec6xkn70"
+
+[node name="BtnHtml" type="Button" parent="."]
+layout_mode = 0
+offset_left = 437.0
+offset_top = 111.0
+offset_right = 585.0
+offset_bottom = 159.0
+text = "HTML"
 
 [node name="SEARCH_TEST_NODES" type="Node" parent="."]
 
@@ -326,10 +383,10 @@ placeholder_text = "value"
 
 [node name="BtnEventRun" type="Button" parent="."]
 layout_mode = 0
-offset_left = 21.0
-offset_top = 896.0
-offset_right = 183.0
-offset_bottom = 976.0
+offset_left = 9.0
+offset_top = 952.0
+offset_right = 387.0
+offset_bottom = 991.0
 text = "RUN WITH EVENTS"
 
 [node name="EventRoot" type="Node" parent="BtnEventRun"]
@@ -358,6 +415,7 @@ tagName = "node3"
 [connection signal="button_up" from="BtnFancyCreate" to="." method="_on_btn_fancy_create_button_up"]
 [connection signal="button_up" from="BtnMoreFancyCreate" to="." method="_on_btn_more_fancy_create_button_up"]
 [connection signal="button_up" from="BtnSearchTest" to="." method="_on_btn_search_test_button_up"]
+[connection signal="button_up" from="BtnHtml" to="." method="_on_btn_html_button_up"]
 [connection signal="button_up" from="BtnEventRun" to="." method="_on_btn_event_run_button_up"]
 [connection signal="prewrite" from="BtnEventRun/EventRoot" to="." method="_on_event_root_prewrite"]
 [connection signal="prewrite" from="BtnEventRun/EventRoot/node1" to="." method="_on_event_root_prewrite"]
